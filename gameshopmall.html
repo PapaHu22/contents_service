@@ -6,12 +6,53 @@
 <link type = "text/css" rel = "stylesheet" href="game_shop_style_sheet.css">
 <style>
 	div.lolbox{
+		width : 200px;
+		height : 600px;
+		font-size : 24px;
+		color : yellow;
+
+
 		background-image : url("shop_image/lolsidead.png");
 		background-size : 200px 600px;
 		background-repeat : reapt-x;
 		background-position: center center;
 	}
+	div.liesPbox{
+		width : 200px;
+		height : 600px;
+		font-size : 24px;
+		color : yellow;
+
+
+		background-image : url("shop_image/liesofPad.png");
+		background-size : 200px 600px;
+		background-repeat : reapt-x;
+		background-position: center center;
+	}
+	div.floot_javaex{
+		width : 600px;
+		height : 200px;
+		float : left;
+	}
 </style>
+<script>
+	function Account(owner, code, balance){
+		this.owner = owner;
+		this.code = code;
+		this.balance = balance;
+
+		this.inquiry = function(){return this.balance;}
+		this.deposit = function(money){this.balance += money;}
+		this.withdraw = function(money){
+			this.balance -= money;
+			return money;
+		}
+	}
+
+	function randomint(){
+		return Math.floor(Math.random()*9) + 1;
+	}
+</script>
 </head>
 <body>
 	<header><h1> PC&게임 쇼핑몰 </h1></header>
@@ -35,7 +76,7 @@
 
 <h2><li>게이밍 노트북</li></h2>
 <ol type = "1">
-	<h3><li><<a href="cpu_shop.html">ASUS</a></li></h3>
+	<h3><li><a href="cpu_shop.html">ASUS</a></li></h3>
 	<h3><li><a href="cpu_shop.html">MSI</a></li></h3>
 	<h3><li><a href="cpu_shop.html">hp</a></li></h3>
 </ol>
@@ -51,15 +92,71 @@
 	<h3><li><a href="cpu_shop.html">마이크</a></li></h3>
 </ol>
 </nav>
-<section>section</section>
+<section>
+	
+</section>
 <aside>
 <h3><a href="loginform.html" target = "_black">로그인</a></h3>
+	<form anme = "fo" method = "get">
+		<label>사용자ID : <input type = "text" placeholder="id@mail" size = "15" value =""></label><br>
+		<label for = "pass">비밀 번호 : </label>
+		<input id = "pass" type = "password" size ="15" value = "">
+		<input type="submit" value="완료">
+	</form>
+	<hr>
+<div class="lolbox">
+	롤 사이드 광고
+</div>
+<br>
+<br>
+<div class ="liesPbox">
+	라이즈 오브 피 광고
 
-<div>
-	<img src = "shop_image/lolsidead.png" width = "200" height="600" alt="lol">
 </div>
 
 </aside>
-<footer>footer</footer>
+<footer>
+	<div class="floot_javaex">
+		<form>
+			<pre>
+				month : <input type = "month" value="2023-10"><br>
+				week : <input type = "week" value = "2023-W38"><br>
+				data : <input type="date" value="2023-10-12"><br>
+				time : <input type = "time" value="16:22"><br>
+				local : <input type="datetime-local" value="2023-10-12T16:22.32"><br>
+			</pre>
+		</form>
+	</div>
+	<div class ="floot_javaex">
+		<script>
+			let account = new Account("박태혁", "111", 35000);
+
+			document.write("account: ");
+			document.write(account.owner + ", ");
+			document.write(account.code + ", ");
+			document.write(account.balance + "<br>");
+
+			account.deposit(10000);
+			document.write("10000원 저금 후 잔액은" + account.inquiry() + "<br>")
+			document.write("5000원 인출 후 잔액은" + account.inquiry() + "<br>")
+			account.withdraw(5000);
+		</script>
+		<script >
+			let ques = randomint() + "*" + randomint();
+			let user = prompt(ques + "값은 얼마입니까?", 0);
+			if(user == null){
+				document.write("구구단 연습을 종료합니다");
+			}
+			else{
+				let ans = eval(ques);
+				if(ans == user)
+					document.write("정답!");
+				else
+					document.write("오답!");
+				document.write(ques + "=" + "<strong>" ans + "</strong>입니다<br>");
+			}
+		</script>
+	</div>
+</footer>
 </body>
 </html>
